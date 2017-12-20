@@ -10,9 +10,9 @@ public class SearchPage extends BasePage {
         visit("https://www.google.com");
     }
 
-    private By inputLocator = By.cssSelector("input#lst-ib");                         //*[@id='lst-ib']
-    private By searchBtnLocator = By.cssSelector("input[name='btnK']");               //*[@value='Google Search'])[1]
-    private By searchResult = By.cssSelector("div[class='_NId']:first-child");            //*[@class='lsb'])[1]
+    private By inputLocator = By.cssSelector("input#lst-ib");
+    private By searchBtnLocator = By.cssSelector("input[name='btnK']");
+    private By searchResult = By.cssSelector("div[class='_NId']:first-child");
 
 
 
