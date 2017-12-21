@@ -14,7 +14,7 @@ public class SearchTest {
     @BeforeMethod
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
 
         driver = new ChromeDriver();
         searchPage = new SearchPage(driver);
@@ -24,8 +24,7 @@ public class SearchTest {
         searchPage.searchWith("Armenia");
         Thread.sleep(3000);
         assertTrue("Search result not found",
-                   searchPage.rightResult());
-
+                   searchPage.getFirstResult().getText().equals("Armenia - Wikipedia"));
     }
     @AfterMethod
     public void tearDown() {

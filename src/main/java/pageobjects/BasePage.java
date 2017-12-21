@@ -5,6 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class BasePage {
 
     private WebDriver driver;
@@ -23,6 +25,10 @@ public class BasePage {
 
     public WebElement find(String cssSelector) {
         return find(By.cssSelector(cssSelector));
+    }
+
+    public List<WebElement> findElements(By locator){
+        return driver.findElements(locator);
     }
 
     public void click(By locator) {

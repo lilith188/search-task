@@ -2,6 +2,9 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SearchPage extends BasePage {
 
@@ -11,8 +14,8 @@ public class SearchPage extends BasePage {
     }
 
     private By inputLocator = By.cssSelector("input#lst-ib");
-    private By searchBtnLocator = By.cssSelector("input[name='btnK']");
-    private By searchResult = By.cssSelector("div[class='_NId']:first-child");
+    private By searchBtnLocator = By.cssSelector("input[type='submit']");
+    private By searchResult = By.cssSelector("div[class='_NId']:first-child");  //(//*[@class='r'])[1]
 
 
 
@@ -24,14 +27,17 @@ public class SearchPage extends BasePage {
         type(inputLocator, input);
     }
 
+
   public void searchWith (String input) {
       typeSearchInput(input);
       clickSearchButton();
   }
 
-    public boolean rightResult(){
-      return find(searchResult).toString().contains("Armenia - Wikipedia");
-   }
+public WebElement getFirstResult(){
+        List<WebElement> elements = findElements(By.cssSelector(".rc .r"));
+        return elements.get(0);
+}
+
 }
 
 
