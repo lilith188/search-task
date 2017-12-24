@@ -18,19 +18,21 @@ public class LoadingTest {
         driver = new ChromeDriver();
         dynamicLoadPage = new LoadingPage(driver);
     }
-     @Test
-     public void dynamicLoad(){
-        dynamicLoadPage.clickStart();
 
+    @Test
+    public void dynamicLoad() {
+        dynamicLoadPage.clickStart();
+        assertTrue(dynamicLoadPage.isLoadingDisplayed());
         assertTrue(dynamicLoadPage.isFinishDisplayed());
         assertEquals(dynamicLoadPage.getFinish().getText(), "Hello World!");
 
-     }
-
-     @AfterMethod
-     public void tearDown() {
-         driver.close();
-         driver.quit();
-     }
 
     }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
+        driver.quit();
+    }
+
+}

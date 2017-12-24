@@ -24,6 +24,10 @@ public class LoadingPage extends BasePage {
         return isDisplayed(find(finishText), 10);
     }
 
+    public boolean isLoadingDisplayed() {
+        return isNotDisplayed(find(loadingText), 10);
+    }
+
     public WebElement getFinish() {
         return find(finishText);
     }

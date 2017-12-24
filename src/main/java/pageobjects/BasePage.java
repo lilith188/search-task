@@ -78,6 +78,16 @@ public class BasePage {
         return true;
     }
 
+    public boolean isNotDisplayed(WebElement element, Integer timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.invisibilityOf(element));
+        } catch (TimeoutException e) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean isDisplayed(By locator) {
         return isDisplayed(find(locator));
 
