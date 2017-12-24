@@ -1,9 +1,9 @@
 package pageobjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -63,8 +63,19 @@ public class BasePage {
         try {
             return element.isDisplayed();
         } catch (NoSuchElementException e) {
+            return false;
         }
-        return false;
+
+    }
+
+    public boolean isDisplayed(WebElement element, Integer timeout) {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } catch (TimeoutException e) {
+            return false;
+        }
+        return true;
     }
 
     public boolean isDisplayed(By locator) {
